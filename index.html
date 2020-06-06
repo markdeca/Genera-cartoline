@@ -1,40 +1,45 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 	<head>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>  
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>  
 	</head>
 	<title>
 	Genera cartoline
 	</title>
 	<body>
-		<div class="container">
+		<div class="load" id="load">
+        	<img src="images/loading.gif">
+        </div>
+		<div class="container" id="container">
 			<form id="card" action="send_email.php" method="post">
-			<div class="tab">
-			<label for="email">Inserisci email destinatario:</label>
-			<input type="text" id="email" name="email" placeholder="esempio@email.it" oninput="this.className = ''">
-			</div>
-			<div class="tab">
-			<label for="topic">Topic:</label>
-			<select id="topic-drop" name="topic-drop" oninput="this.className = ''"></select>
-			</div>
-			<div class="tab">
-			<label for="messaggio">Inserisci un messaggio:</label>
-			<textarea type="text" id="messaggio" name="messaggio" placeholder="Scrivi qualcosa..." oninput="this.className = ''"></textarea>
-			</div>
-			<div style="overflow:auto;">
-  			<div style="float:right;">
-    			<button type="button" id="prevBtn" onclick="nextPrev(-1)">Indietro</button>
-    			<button type="button" id="nextBtn" onclick="nextPrev(1)">Avanti</button>
-  			</div>
+				<div class="tab">
+					<label for="email">Inserisci email destinatario:</label>
+					<input type="text" id="email" name="email" placeholder="esempio@email.it" oninput="this.className = ''">
+				</div>
+				<div class="tab">
+					<label for="topic">Topic:</label>
+					<select id="topic-drop" name="topic-drop" oninput="this.className = ''"></select>
+				</div>
+				<div class="tab">
+					<label for="messaggio">Inserisci un messaggio:</label>
+					<textarea type="text" id="messaggio" name="messaggio" placeholder="Scrivi qualcosa..." oninput="this.className = ''"></textarea>
+				</div>
+				<div class="button_container">
+  					<div class="button_move">
+    						<button type="button" id="prevBtn" onclick="nextPrev(-1)">Indietro</button>
+    						<button type="button" id="nextBtn" onclick="nextPrev(1)">Avanti</button>
+  					</div>
+				</div>
+				<div class="steps">
+  					<span class="step"></span>
+  					<span class="step"></span>
+  					<span class="step"></span>
+				</div>
+			</form>   
 		</div>
-		<div style="text-align:center;margin-top:40px;">
-  			<span class="step"></span>
-  			<span class="step"></span>
-  			<span class="step"></span>
-		</div>
-			</form>    
-		</div>
-		<script src="js/lista.js"></script>
+		<script src="js/list.js"></script>
 		<script src="js/hide_form.js"></script>
+        <script>
+        </script>
 	</body>       
 </html>

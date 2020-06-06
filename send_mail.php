@@ -12,39 +12,32 @@ $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
 
 // Carica immagine in base al topic scelto
 if ($topic=="Mare"){
-
-$file = file_get_contents('https://source.unsplash.com/random/300x600/?beach');
-$myfile = fopen("images/temp.jpeg", "w+") or die("Unable to open file!");
-fwrite($myfile, $file);
-fclose($myfile);
+$file = file_get_contents('https://loremflickr.com/g/320/240/beach');
 }
-else if ($topic=="Montagna"){
 
-$file = file_get_contents('https://source.unsplash.com/random/300x600/?mountain');
-$myfile = fopen("images/temp.jpeg", "w+") or die("Unable to open file!");
-fwrite($myfile, $file);
-fclose($myfile);
+else if ($topic=="Montagna"){
+$file = file_get_contents('https://loremflickr.com/g/320/240/mountain');
 }
 
 else if ($topic=="Relax"){
-$file = file_get_contents('https://source.unsplash.com/random/300x600/?relax');
+$file = file_get_contents('https://loremflickr.com/g/320/240/fun');
+}
+
 $myfile = fopen("images/temp.jpeg", "w+") or die("Unable to open file!");
 fwrite($myfile, $file);
 fclose($myfile);
-}
+
 
 // Rileva indirizzo host ed invia email HTML
 $url=$_SERVER['SERVER_NAME'];
-$message2='<br><br><br><img src="http://'.$url.'/images/temp.jpeg">';
+$message2='<br><br><br><img src="http://'.$url.'/images/temp.jpeg"><br><br><br>';
 
+// Unisce il messaggio all'immgine salvata
 $message=$message1.$message2;
 
 mail($to,$subject,$message,$headers);
 
 // Anteprima immagine inviata
 header('Location: nextpage.html');
+
 ?>
-
-
-
-

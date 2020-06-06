@@ -2,26 +2,16 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script> 
-	<script type='text/javascript'>
-	//Ricarica la pagina in modo tale che venga mostrata sempre l'immagine aggiornata
-		(function()
-			{
-  				if( window.localStorage )
-  					{
-    					if( !localStorage.getItem('firstLoad') )
-    						{
-      							localStorage['firstLoad'] = true;
-      							window.location.reload();
-    						}  
-    			else 
-      				localStorage.removeItem('firstLoad');
-  					}
-					})();
-</script>
+	<script type='text/javascript' src="js/reload_page.js"></script> 
+		
 </head>
 	<div class="preview">
 		<img src="images/temp.jpeg">
 		<p>Email inviata con successo con questa foto!</p>
+	<div class="button_container">
+  		<div class="button_move">
+    			<a href="index.html"><button type="button" id="nextBtn">Indietro</button></a>			
+  		</div>
 	</div>
 </html>
 

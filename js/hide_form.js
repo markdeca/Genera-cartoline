@@ -1,5 +1,6 @@
 var currentTab = 0; 
 showTab(currentTab);
+
 //Carica gli elementi del form
 function showTab(n) {
   		var x = document.getElementsByClassName("tab");
@@ -18,6 +19,7 @@ function showTab(n) {
   							}	
   			fixStepIndicator(n)
 			}
+            
 function nextPrev(n) {
   			var x = document.getElementsByClassName("tab");
   			if (n == 1 && !validateForm()) return false;
@@ -25,19 +27,41 @@ function nextPrev(n) {
   				currentTab = currentTab + n;
   			if (currentTab >= x.length) {
     				document.getElementById("card").submit();
+                    		document.getElementById("container").style.display = "none";
+                    		document.getElementById("load").style.display = "block";
     				return false;
   				}
   				showTab(currentTab);
+               
 			}
-//Effettua un controllo sui tag HTML e li convalida se presenti
+
+
+//Convalida testo email se nella forma nome@dominio.estensione
+function validateEmail(email) {
+  const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+//Convalida l'intero form
 function validateForm() {
  			var x, y, i, valid = true;
   			x = document.getElementsByClassName("tab");
   			y = x[currentTab].getElementsByTagName("input");
   			z = x[currentTab].getElementsByTagName("select");
   			k = x[currentTab].getElementsByTagName("textarea");
+
   			for (i = 0; i < y.length; i++) {
-    			if (y[i].value == "" ) {
+			const $result = $("#result");
+  			const email = $("#email").val();
+  			$result.text("");
+  			if (validateEmail(email)) {
+				valid=true;
+  				} 
+			else {
+				valid=false;
+				y[i].className += " invalid";
+  				}
+    			if (y[i].value == "" && valid) {
       				y[i].className += " invalid";
       				valid = false;
     						}
